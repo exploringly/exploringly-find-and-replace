@@ -13,9 +13,9 @@ ResultsPaneView = require './project/results-pane'
 module.exports =
   activate: ({findOptions, findHistory, replaceHistory, pathsHistory}={}) ->
     # Convert old config setting for backward compatibility.
-    if atom.config.get('find-and-replace.openProjectFindResultsInRightPane')
-      atom.config.set('find-and-replace.projectSearchResultsPaneSplitDirection', 'right')
-    atom.config.unset('find-and-replace.openProjectFindResultsInRightPane')
+    if atom.config.get('exploringly-find-and-replace.openProjectFindResultsInRightPane')
+      atom.config.set('exploringly-find-and-replace.projectSearchResultsPaneSplitDirection', 'right')
+    atom.config.unset('exploringly-find-and-replace.openProjectFindResultsInRightPane')
 
     atom.workspace.addOpener (filePath) ->
       new ResultsPaneView() if filePath is ResultsPaneView.URI
@@ -35,7 +35,7 @@ module.exports =
       else
         @findModel.setEditor(null)
 
-    @subscriptions.add atom.commands.add '.find-and-replace, .project-find', 'window:focus-next-pane', ->
+    @subscriptions.add atom.commands.add '.exploringly-find-and-replace, .project-find', 'window:focus-next-pane', ->
       atom.views.getView(atom.workspace).focus()
 
     @subscriptions.add atom.commands.add 'atom-workspace', 'project-find:show', =>
@@ -53,23 +53,23 @@ module.exports =
       @projectFindView.focusFindElement()
       @projectFindView.findInCurrentlySelectedDirectory(target)
 
-    @subscriptions.add atom.commands.add 'atom-workspace', 'find-and-replace:use-selection-as-find-pattern', =>
+    @subscriptions.add atom.commands.add 'atom-workspace', 'exploringly-find-and-replace:use-selection-as-find-pattern', =>
       return if @projectFindPanel?.isVisible() or @findPanel?.isVisible()
       @createViews()
 
-    @subscriptions.add atom.commands.add 'atom-workspace', 'find-and-replace:toggle', =>
+    @subscriptions.add atom.commands.add 'atom-workspace', 'exploringly-find-and-replace:toggle', =>
       @createViews()
       togglePanel @findPanel, @projectFindPanel, => @findView.focusFindEditor()
 
-    @subscriptions.add atom.commands.add 'atom-workspace', 'find-and-replace:show', =>
+    @subscriptions.add atom.commands.add 'atom-workspace', 'exploringly-find-and-replace:show', =>
       @createViews()
       showPanel @findPanel, @projectFindPanel, => @findView.focusFindEditor()
 
-    @subscriptions.add atom.commands.add 'atom-workspace', 'find-and-replace:show-replace', =>
+    @subscriptions.add atom.commands.add 'atom-workspace', 'exploringly-find-and-replace:show-replace', =>
       @createViews()
       showPanel @findPanel, @projectFindPanel, => @findView.focusReplaceEditor()
 
-    @subscriptions.add atom.commands.add 'atom-workspace', 'find-and-replace:clear-history', =>
+    @subscriptions.add atom.commands.add 'atom-workspace', 'exploringly-find-and-replace:clear-history', =>
       @findHistory.clear()
       @replaceHistory.clear()
 
@@ -108,13 +108,13 @@ module.exports =
         postToggleAction?()
 
     @subscriptions.add atom.commands.add '.editor:not(.mini)',
-      'find-and-replace:select-next': (event) ->
+      'exploringly-find-and-replace:select-next': (event) ->
         selectNextObjectForEditorElement(this).findAndSelectNext()
-      'find-and-replace:select-all': (event) ->
+      'exploringly-find-and-replace:select-all': (event) ->
         selectNextObjectForEditorElement(this).findAndSelectAll()
-      'find-and-replace:select-undo': (event) ->
+      'exploringly-find-and-replace:select-undo': (event) ->
         selectNextObjectForEditorElement(this).undoLastSelection()
-      'find-and-replace:select-skip': (event) ->
+      'exploringly-find-and-replace:select-skip': (event) ->
         selectNextObjectForEditorElement(this).skipCurrentSelection()
 
   consumeElementIcons: (service) ->
@@ -141,7 +141,7 @@ module.exports =
   consumeAutocompleteWatchEditor: (watchEditor) ->
     @autocompleteWatchEditor = watchEditor
     atom.config.observe(
-      'find-and-replace.autocompleteSearches',
+      'exploringly-find-and-replace.autocompleteSearches',
       (value) => @toggleAutocompletions(value))
     new Disposable =>
       @autocompleteSubscriptions?.dispose()
@@ -183,10 +183,10 @@ module.exports =
     #    ProjectFindView needs to know about each model so it can invoke a search.
     #    And on each new model, it will run the search again.
     #
-    # See https://github.com/atom/find-and-replace/issues/63
+    # See https://github.com/atom/exploringly-find-and-replace/issues/63
     ResultsPaneView.model = @resultsModel
 
-    @toggleAutocompletions atom.config.get('find-and-replace.autocompleteSearches')
+    @toggleAutocompletions atom.config.get('exploringly-find-and-replace.autocompleteSearches')
 
   deactivate: ->
     @findPanel?.destroy()

@@ -10,8 +10,8 @@ describe("ResultsModel", () => {
 
   beforeEach(async () => {
     atom.config.set("core.excludeVcsIgnoredPaths", false);
-    atom.config.set("find-and-replace.searchContextLineCountBefore", 2);
-    atom.config.set("find-and-replace.searchContextLineCountAfter", 3);
+    atom.config.set("exploringly-find-and-replace.searchContextLineCountBefore", 2);
+    atom.config.set("exploringly-find-and-replace.searchContextLineCountAfter", 3);
     atom.project.setPaths([path.join(__dirname, "fixtures")]);
 
     editor = await atom.workspace.open("sample.js");

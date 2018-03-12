@@ -1,7 +1,7 @@
 {
-  "name": "find-and-replace",
+  "name": "exploringly-find-and-replace",
   "main": "./lib/find",
-  "description": "Find and replace within buffers and across the project.",
+  "description": "Replace without moving the cursor.",
   "version": "0.215.5",
   "license": "MIT",
   "activationCommands": {
@@ -9,23 +9,24 @@
       "project-find:show",
       "project-find:toggle",
       "project-find:show-in-current-directory",
-      "find-and-replace:show",
-      "find-and-replace:toggle",
-      "find-and-replace:find-all",
-      "find-and-replace:find-next",
-      "find-and-replace:find-previous",
-      "find-and-replace:find-next-selected",
-      "find-and-replace:find-previous-selected",
-      "find-and-replace:use-selection-as-find-pattern",
-      "find-and-replace:show-replace",
-      "find-and-replace:replace-next",
-      "find-and-replace:replace-all",
-      "find-and-replace:select-next",
-      "find-and-replace:select-all",
-      "find-and-replace:clear-history"
+      "exploringly-find-and-replace:show",
+      "exploringly-find-and-replace:toggle",
+      "exploringly-find-and-replace:find-all",
+      "exploringly-find-and-replace:find-next",
+      "exploringly-find-and-replace:find-previous",
+      "exploringly-find-and-replace:find-next-selected",
+      "exploringly-find-and-replace:find-previous-selected",
+      "exploringly-find-and-replace:use-selection-as-find-pattern",
+      "exploringly-find-and-replace:show-replace",
+      "exploringly-find-and-replace:replace-next",
+      "exploringly-find-and-replace:replace-next-and-find",
+      "exploringly-find-and-replace:replace-all",
+      "exploringly-find-and-replace:select-next",
+      "exploringly-find-and-replace:select-all",
+      "exploringly-find-and-replace:clear-history"
     ]
   },
-  "repository": "https://github.com/atom/find-and-replace",
+  "repository": "https://github.com/exploringly/exploringly-find-and-replace",
   "engines": {
     "atom": "*"
   },
@@ -58,8 +59,8 @@
     }
   },
   "providedServices": {
-    "find-and-replace": {
-      "description": "Atom's bundled find-and-replace package",
+    "exploringly-find-and-replace": {
+      "description": "Atom's bundled exploringly-find-and-replace package",
       "versions": {
         "0.0.1": "provideService"
       }
