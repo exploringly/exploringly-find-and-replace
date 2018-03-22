@@ -1,5 +1,5 @@
 # Find and Replace package
-[![OS X Build Status](https://travis-ci.org/atom/find-and-replace.svg?branch=master)](https://travis-ci.org/atom/find-and-replace) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/6w4baiiq5mw4nxky/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/find-and-replace/branch/master) [![Dependency Status](https://david-dm.org/atom/find-and-replace.svg)](https://david-dm.org/atom/find-and-replace)
+[![OS X Build Status](https://travis-ci.org/atom/exploringly-find-and-replace.svg?branch=master)](https://travis-ci.org/atom/exploringly-find-and-replace) [![Windows Build Status](https://ci.appveyor.com/api/projects/status/6w4baiiq5mw4nxky/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/exploringly-find-and-replace/branch/master) [![Dependency Status](https://david-dm.org/atom/exploringly-find-and-replace.svg)](https://david-dm.org/atom/exploringly-find-and-replace)
 
 This is a fork of atom find-and-replace 0.215.5. It modifies the normal Replace action/button and adds a Replace And Find action/button.
 
@@ -19,4 +19,4 @@ Using the shortcut <kbd>cmd-shift-f</kbd> (Mac) or <kbd>ctrl-shift-f</kbd> (Wind
 
 ## Provided Service
 
-If you need access the marker layer containing result markers for a given editor, use the `find-and-replace@0.0.1` service. The service exposes one method, `resultsMarkerLayerForTextEditor`, which takes a `TextEditor` and returns a `TextEditorMarkerLayer` that you can interact with. Keep in mind that any work you do in synchronous event handlers on this layer will impact the performance of find and replace.
+If you need access the marker layer containing result markers for a given editor, use the `exploringly-find-and-replace@0.0.1` service. The service exposes one method, `resultsMarkerLayerForTextEditor`, which takes a `TextEditor` and returns a `TextEditorMarkerLayer` that you can interact with. Keep in mind that any work you do in synchronous event handlers on this layer will impact the performance of find and replace.
