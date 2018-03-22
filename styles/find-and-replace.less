@@ -1,7 +1,7 @@
 @import "ui-variables";
 @import "syntax-variables";
 
-@exploringly-find-and-replace-font: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+@find-and-replace-font: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
 
 // result markers
 atom-text-editor {
@@ -36,7 +36,7 @@ atom-workspace.find-visible {
 }
 
 // Both project and buffer FNR styles
-.exploringly-find-and-replace,
+.find-and-replace,
 .preview-pane,
 .project-find {
   @min-width: 200px; // min width before it starts scrolling
@@ -142,7 +142,7 @@ atom-workspace.find-visible {
 }
 
 // Buffer find and replace
-.exploringly-find-and-replace {
+.find-and-replace {
   @input-width: 260px;
   @block-width: 260px;
 
@@ -309,7 +309,7 @@ atom-workspace.find-visible {
       margin-right: 1ex;
       text-align: right;
       display: inline-block;
-      font-family: @exploringly-find-and-replace-font;
+      font-family: @find-and-replace-font;
     }
     .match-line.selected .line-number {
       color: @text-color-selected;
@@ -330,7 +330,7 @@ atom-workspace.find-visible {
 
     .preview {
       word-break: break-all;
-      font-family: @exploringly-find-and-replace-font;
+      font-family: @find-and-replace-font;
       white-space: pre;
       color: @text-color-subtle;
     }

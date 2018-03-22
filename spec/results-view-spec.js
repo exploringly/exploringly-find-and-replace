@@ -44,7 +44,7 @@ describe('ResultsView', () => {
     atom.config.set('core.excludeVcsIgnoredPaths', false);
     atom.project.setPaths([path.join(__dirname, 'fixtures')]);
 
-    let activationPromise = atom.packages.activatePackage("exploringly-find-and-replace").then(function({mainModule}) {
+    let activationPromise = atom.packages.activatePackage("find-and-replace").then(function({mainModule}) {
       mainModule.createViews();
       ({projectFindView} = mainModule);
       const spy = spyOn(projectFindView, 'confirm').andCallFake(() => {
@@ -433,7 +433,7 @@ describe('ResultsView', () => {
       });
 
       it("does not create a split when the option is 'none'", async () => {
-        atom.config.set('exploringly-find-and-replace.projectSearchResultsPaneSplitDirection', 'none');
+        atom.config.set('find-and-replace.projectSearchResultsPaneSplitDirection', 'none');
         atom.commands.dispatch(resultsView.element, 'core:move-down');
         atom.commands.dispatch(resultsView.element, 'core:confirm');
         await paneItemOpening()
@@ -441,7 +441,7 @@ describe('ResultsView', () => {
       });
 
       it("always opens the file in the left pane when the option is 'right'", async () => {
-        atom.config.set('exploringly-find-and-replace.projectSearchResultsPaneSplitDirection', 'right');
+        atom.config.set('find-and-replace.projectSearchResultsPaneSplitDirection', 'right');
         atom.commands.dispatch(resultsView.element, 'core:move-down');
         atom.commands.dispatch(resultsView.element, 'core:confirm');
         await paneItemOpening()
@@ -449,7 +449,7 @@ describe('ResultsView', () => {
       });
 
       it("always opens the file in the pane above when the options is 'down'", async () => {
-        atom.config.set('exploringly-find-and-replace.projectSearchResultsPaneSplitDirection', 'down')
+        atom.config.set('find-and-replace.projectSearchResultsPaneSplitDirection', 'down')
         atom.commands.dispatch(resultsView.element, 'core:move-down');
         atom.commands.dispatch(resultsView.element, 'core:confirm');
         await paneItemOpening()
@@ -611,7 +611,7 @@ describe('ResultsView', () => {
     });
   });
 
-  describe("copying path with exploringly-find-and-replace:copy-path", () => {
+  describe("copying path with find-and-replace:copy-path", () => {
     it("copies the selected file path to clipboard", async () => {
       projectFindView.findEditor.setText('items');
       atom.commands.dispatch(projectFindView.element, 'core:confirm');
@@ -621,10 +621,10 @@ describe('ResultsView', () => {
       resultsView.selectFirstResult();
       resultsView.collapseResult();
 
-      atom.commands.dispatch(resultsView.element, 'exploringly-find-and-replace:copy-path');
+      atom.commands.dispatch(resultsView.element, 'find-and-replace:copy-path');
       expect(atom.clipboard.read()).toBe('sample.coffee');
       atom.commands.dispatch(resultsView.element, 'core:move-down');
-      atom.commands.dispatch(resultsView.element, 'exploringly-find-and-replace:copy-path');
+      atom.commands.dispatch(resultsView.element, 'find-and-replace:copy-path');
       expect(atom.clipboard.read()).toBe('sample.js');
     });
 
@@ -645,10 +645,10 @@ describe('ResultsView', () => {
         resultsView = getResultsView();
         resultsView.selectFirstResult();
         resultsView.collapseResult();
-        atom.commands.dispatch(resultsView.element, 'exploringly-find-and-replace:copy-path');
+        atom.commands.dispatch(resultsView.element, 'find-and-replace:copy-path');
         expect(atom.clipboard.read()).toBe(path.join(path.basename(folder1), path.basename(file1)));
         atom.commands.dispatch(resultsView.element, 'core:move-down');
-        atom.commands.dispatch(resultsView.element, 'exploringly-find-and-replace:copy-path');
+        atom.commands.dispatch(resultsView.element, 'find-and-replace:copy-path');
         expect(atom.clipboard.read()).toBe(path.join(path.basename(folder2), path.basename(file2)));
     });
   });
@@ -688,7 +688,7 @@ describe('ResultsView', () => {
       it('allows a service provider to change the handler', async () => {
         const provider = {
           iconClassForPath(path, context) {
-            expect(context).toBe('exploringly-find-and-replace')
+            expect(context).toBe('find-and-replace')
             return (path.endsWith('one-long-line.coffee'))
               ? 'first-icon-class second-icon-class'
               : ['third-icon-class', 'fourth-icon-class']
@@ -797,10 +797,10 @@ describe('ResultsView', () => {
 
   describe('search result context lines', () => {
     beforeEach(async () => {
-      atom.config.set('exploringly-find-and-replace.searchContextLineCountBefore', 2);
-      atom.config.set('exploringly-find-and-replace.searchContextLineCountAfter', 3);
-      atom.config.set('exploringly-find-and-replace.leadingContextLineCount', 0);
-      atom.config.set('exploringly-find-and-replace.trailingContextLineCount', 0);
+      atom.config.set('find-and-replace.searchContextLineCountBefore', 2);
+      atom.config.set('find-and-replace.searchContextLineCountAfter', 3);
+      atom.config.set('find-and-replace.leadingContextLineCount', 0);
+      atom.config.set('find-and-replace.trailingContextLineCount', 0);
 
       projectFindView.findEditor.setText('items');
       atom.commands.dispatch(projectFindView.element, 'core:confirm');

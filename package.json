@@ -9,21 +9,20 @@
       "project-find:show",
       "project-find:toggle",
       "project-find:show-in-current-directory",
-      "exploringly-find-and-replace:show",
-      "exploringly-find-and-replace:toggle",
-      "exploringly-find-and-replace:find-all",
-      "exploringly-find-and-replace:find-next",
-      "exploringly-find-and-replace:find-previous",
-      "exploringly-find-and-replace:find-next-selected",
-      "exploringly-find-and-replace:find-previous-selected",
-      "exploringly-find-and-replace:use-selection-as-find-pattern",
-      "exploringly-find-and-replace:show-replace",
-      "exploringly-find-and-replace:replace-next",
-      "exploringly-find-and-replace:replace-next-and-find",
-      "exploringly-find-and-replace:replace-all",
-      "exploringly-find-and-replace:select-next",
-      "exploringly-find-and-replace:select-all",
-      "exploringly-find-and-replace:clear-history"
+      "find-and-replace:show",
+      "find-and-replace:toggle",
+      "find-and-replace:find-all",
+      "find-and-replace:find-next",
+      "find-and-replace:find-previous",
+      "find-and-replace:find-next-selected",
+      "find-and-replace:find-previous-selected",
+      "find-and-replace:use-selection-as-find-pattern",
+      "find-and-replace:show-replace",
+      "find-and-replace:replace-next",
+      "find-and-replace:replace-all",
+      "find-and-replace:select-next",
+      "find-and-replace:select-all",
+      "find-and-replace:clear-history"
     ]
   },
   "repository": "https://github.com/exploringly/exploringly-find-and-replace",
@@ -59,8 +58,8 @@
     }
   },
   "providedServices": {
-    "exploringly-find-and-replace": {
-      "description": "Atom's bundled exploringly-find-and-replace package",
+    "find-and-replace": {
+      "description": "Atom's bundled find-and-replace package",
       "versions": {
         "0.0.1": "provideService"
       }

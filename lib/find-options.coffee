@@ -21,12 +21,12 @@ class FindOptions
     @findPattern = ''
     @replacePattern = state.replacePattern ? ''
     @pathsPattern = state.pathsPattern ? ''
-    @useRegex = state.useRegex ? atom.config.get('exploringly-find-and-replace.useRegex') ? false
-    @caseSensitive = state.caseSensitive ? atom.config.get('exploringly-find-and-replace.caseSensitive') ? false
-    @wholeWord = state.wholeWord ? atom.config.get('exploringly-find-and-replace.wholeWord') ? false
-    @inCurrentSelection = state.inCurrentSelection ? atom.config.get('exploringly-find-and-replace.inCurrentSelection') ? false
-    @leadingContextLineCount = state.leadingContextLineCount ? atom.config.get('exploringly-find-and-replace.leadingContextLineCount') ? 0
-    @trailingContextLineCount = state.trailingContextLineCount ? atom.config.get('exploringly-find-and-replace.trailingContextLineCount') ? 0
+    @useRegex = state.useRegex ? atom.config.get('find-and-replace.useRegex') ? false
+    @caseSensitive = state.caseSensitive ? atom.config.get('find-and-replace.caseSensitive') ? false
+    @wholeWord = state.wholeWord ? atom.config.get('find-and-replace.wholeWord') ? false
+    @inCurrentSelection = state.inCurrentSelection ? atom.config.get('find-and-replace.inCurrentSelection') ? false
+    @leadingContextLineCount = state.leadingContextLineCount ? atom.config.get('find-and-replace.leadingContextLineCount') ? 0
+    @trailingContextLineCount = state.trailingContextLineCount ? atom.config.get('find-and-replace.trailingContextLineCount') ? 0
 
   onDidChange: (callback) ->
     @emitter.on('did-change', callback)

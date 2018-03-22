@@ -16,16 +16,16 @@ describe("SelectNext", () => {
     editorElement = atom.views.getView(editor);
 
     jasmine.attachToDOM(workspaceElement);
-    const activationPromise = atom.packages.activatePackage("exploringly-find-and-replace");
-    atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:show');
+    const activationPromise = atom.packages.activatePackage("find-and-replace");
+    atom.commands.dispatch(editorElement, 'find-and-replace:show');
     await activationPromise;
   });
 
-  describe("exploringly-find-and-replace:select-next", () => {
+  describe("find-and-replace:select-next", () => {
     describe("when nothing is selected", () => {
       it("selects the word under the cursor", () => {
         editor.setCursorBufferPosition([1, 3]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([[[1, 2], [1, 5]]]);
       });
     });
@@ -45,25 +45,25 @@ describe("SelectNext", () => {
           `);
 
           editor.setCursorBufferPosition([0, 0]);
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 3]]
           ]);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 3]],
             [[3, 8], [3, 11]]
           ]);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 3]],
             [[3, 8], [3, 11]],
             [[5, 6], [5, 9]]
           ]);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 3]],
             [[3, 8], [3, 11]],
@@ -73,12 +73,12 @@ describe("SelectNext", () => {
           editor.setText("Testing reallyTesting");
           editor.setCursorBufferPosition([0, 0]);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 7]]
           ]);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 7]]
           ]);});});
@@ -96,20 +96,20 @@ describe("SelectNext", () => {
 
           editor.setSelectedBufferRange([[0, 0], [0, 3]]);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 3]],
             [[1, 2], [1, 5]]
           ]);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 3]],
             [[1, 2], [1, 5]],
             [[2, 0], [2, 3]]
           ]);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 3]],
             [[1, 2], [1, 5]],
@@ -120,7 +120,7 @@ describe("SelectNext", () => {
           editor.setText("Testing reallyTesting");
           editor.setSelectedBufferRange([[0, 0], [0, 7]]);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 7]],
             [[0, 14], [0, 21]]
@@ -142,20 +142,20 @@ describe("SelectNext", () => {
 
         editor.setSelectedBufferRange([[1, 2], [1, 5]]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[1, 2], [1, 5]],
           [[2, 0], [2, 3]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[1, 2], [1, 5]],
           [[2, 0], [2, 3]],
           [[3, 8], [3, 11]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[1, 2], [1, 5]],
           [[2, 0], [2, 3]],
@@ -163,7 +163,7 @@ describe("SelectNext", () => {
           [[4, 0], [4, 3]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[1, 2], [1, 5]],
           [[2, 0], [2, 3]],
@@ -172,7 +172,7 @@ describe("SelectNext", () => {
           [[5, 6], [5, 9]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[1, 2], [1, 5]],
           [[2, 0], [2, 3]],
@@ -191,7 +191,7 @@ describe("SelectNext", () => {
           <a
         `);
         editor.setSelectedBufferRange([[0, 0], [0, 1]]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 1]],
           [[1, 0], [1, 1]]
@@ -207,18 +207,18 @@ describe("SelectNext", () => {
           a
         `);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 1]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 1]],
           [[2, 0], [2, 1]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 1]],
           [[2, 0], [2, 1]]
@@ -230,27 +230,27 @@ describe("SelectNext", () => {
       editor.setText('ab ab ab ab')
       editor.setSelectedBufferRange([[0, 0], [0, 2]], {reversed: true})
 
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-next')
       expect(editor.getSelections().length).toBe(2)
       expect(editor.getSelections().every(s => s.isReversed())).toBe(true)
 
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-next')
       expect(editor.getSelections().length).toBe(3)
       expect(editor.getSelections().every(s => s.isReversed())).toBe(true)
 
       editor.setSelectedBufferRange([[0, 0], [0, 2]], {reversed: false})
 
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-next')
       expect(editor.getSelections().length).toBe(2)
       expect(editor.getSelections().every(s => !s.isReversed())).toBe(true)
 
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-next')
       expect(editor.getSelections().length).toBe(3)
       expect(editor.getSelections().every(s => !s.isReversed())).toBe(true)
     })
   });
 
-  describe("exploringly-find-and-replace:select-all", () => {
+  describe("find-and-replace:select-all", () => {
     describe("when there is no selection", () => {
       it("find and selects all occurrences of the word under the cursor", () => {
         editor.setText(dedent`
@@ -262,14 +262,14 @@ describe("SelectNext", () => {
           a 3rd for is here
         `);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-all');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-all');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 3]],
           [[3, 8], [3, 11]],
           [[5, 6], [5, 9]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-all');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-all');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 3]],
           [[3, 8], [3, 11]],
@@ -290,14 +290,14 @@ describe("SelectNext", () => {
             a 3rd for is here
           `);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-all');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-all');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 3]],
             [[3, 8], [3, 11]],
             [[5, 6], [5, 9]]
           ]);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-all');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-all');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[0, 0], [0, 3]],
             [[3, 8], [3, 11]],
@@ -319,7 +319,7 @@ describe("SelectNext", () => {
 
           editor.setSelectedBufferRange([[3, 8], [3, 11]]);
 
-          atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-all');
+          atom.commands.dispatch(editorElement, 'find-and-replace:select-all');
           expect(editor.getSelectedBufferRanges()).toEqual([
             [[3, 8], [3, 11]],
             [[0, 0], [0, 3]],
@@ -339,7 +339,7 @@ describe("SelectNext", () => {
           <a\
         `);
         editor.setSelectedBufferRange([[0, 0], [0, 1]]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-all');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-all');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 1]],
           [[1, 0], [1, 1]]
@@ -351,19 +351,19 @@ describe("SelectNext", () => {
       editor.setText('ab ab ab ab')
       editor.setSelectedBufferRange([[0, 0], [0, 2]], {reversed: true})
 
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-all')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-all')
       expect(editor.getSelections().length).toBe(4)
       expect(editor.getSelections().every(s => s.isReversed())).toBe(true)
 
       editor.setSelectedBufferRange([[0, 0], [0, 2]], {reversed: false})
 
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-all')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-all')
       expect(editor.getSelections().length).toBe(4)
       expect(editor.getSelections().every(s => !s.isReversed())).toBe(true)
     })
   });
 
-  describe("exploringly-find-and-replace:select-undo", () => {
+  describe("find-and-replace:select-undo", () => {
     describe("when there is no selection", () => {
       it("does nothing", () => {
         editor.setText(dedent`
@@ -375,7 +375,7 @@ describe("SelectNext", () => {
           a 3rd for is here
         `);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-undo');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-undo');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 0]]
         ]);
@@ -395,7 +395,7 @@ describe("SelectNext", () => {
 
         editor.setSelectedBufferRange([[3, 8], [3, 11]]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-undo');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-undo');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[3, 11], [3, 11]]
         ]);
@@ -415,13 +415,13 @@ describe("SelectNext", () => {
 
         editor.setSelectedBufferRange([[3, 8], [3, 11]]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-undo');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-undo');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[3, 8], [3, 11]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-undo');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-undo');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[3, 11], [3, 11]]
         ]);
@@ -440,17 +440,17 @@ describe("SelectNext", () => {
         `);
 
         editor.setCursorBufferPosition([0, 0]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-undo');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-undo');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 3]],
           [[3, 8], [3, 11]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-undo');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-undo');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 3]]
         ]);
@@ -469,16 +469,16 @@ describe("SelectNext", () => {
         `);
 
         editor.setCursorBufferPosition([5, 7]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[5, 6], [5, 9]]
         ]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[5, 6], [5, 9]],
           [[0, 0], [0, 3]]
         ]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-undo');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-undo');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[5, 6], [5, 9]]
         ]);});
@@ -494,14 +494,14 @@ describe("SelectNext", () => {
         `);
 
         editor.setCursorBufferPosition([5, 7]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[5, 6], [5, 9]]
         ]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-undo');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-undo');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[5, 6], [5, 9]],
           [[0, 0], [0, 3]]
@@ -510,7 +510,7 @@ describe("SelectNext", () => {
     });
   });
 
-  describe("exploringly-find-and-replace:select-skip", () => {
+  describe("find-and-replace:select-skip", () => {
     describe("when there is no selection", () => {
       it("does nothing", () => {
         editor.setText(dedent`
@@ -522,7 +522,7 @@ describe("SelectNext", () => {
           a 3rd for is here
         `);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-skip');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-skip');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 0]]
         ]);
@@ -541,12 +541,12 @@ describe("SelectNext", () => {
         `);
 
         editor.setCursorBufferPosition([3, 8]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[3, 8], [3, 11]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-skip');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-skip');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[5, 6], [5, 9]]
         ]);
@@ -565,19 +565,19 @@ describe("SelectNext", () => {
         `);
 
         editor.setCursorBufferPosition([0, 0]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 3]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-skip');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-skip');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 3]],
           [[5, 6], [5, 9]]
         ]);
 
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-skip');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-skip');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[0, 0], [0, 3]]
         ]);
@@ -596,12 +596,12 @@ describe("SelectNext", () => {
         `);
 
         editor.setCursorBufferPosition([5, 7]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[5, 6], [5, 9]]
         ]);
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next');
-        atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-skip');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-next');
+        atom.commands.dispatch(editorElement, 'find-and-replace:select-skip');
         expect(editor.getSelectedBufferRanges()).toEqual([
           [[5, 6], [5, 9]],
           [[3, 8], [3, 11]]
@@ -613,23 +613,23 @@ describe("SelectNext", () => {
       editor.setText('ab ab ab ab')
       editor.setSelectedBufferRange([[0, 0], [0, 2]], {reversed: true})
 
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-skip')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-skip')
       expect(editor.getSelections().length).toBe(1)
       expect(editor.getSelections().every(s => s.isReversed())).toBe(true)
 
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next')
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-skip')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-next')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-skip')
       expect(editor.getSelections().length).toBe(2)
       expect(editor.getSelections().every(s => s.isReversed())).toBe(true)
 
       editor.setSelectedBufferRange([[0, 0], [0, 2]], {reversed: false})
 
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-skip')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-skip')
       expect(editor.getSelections().length).toBe(1)
       expect(editor.getSelections().every(s => !s.isReversed())).toBe(true)
 
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-next')
-      atom.commands.dispatch(editorElement, 'exploringly-find-and-replace:select-skip')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-next')
+      atom.commands.dispatch(editorElement, 'find-and-replace:select-skip')
       expect(editor.getSelections().length).toBe(2)
       expect(editor.getSelections().every(s => !s.isReversed())).toBe(true)
     })
