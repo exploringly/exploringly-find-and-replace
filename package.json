@@ -2,7 +2,7 @@
   "name": "exploringly-find-and-replace",
   "main": "./lib/find",
   "description": "Replace without moving the cursor.",
-  "version": "0.215.5",
+  "version": "0.215.6",
   "license": "MIT",
   "activationCommands": {
     "atom-workspace": [
